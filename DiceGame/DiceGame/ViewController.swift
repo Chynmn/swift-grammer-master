@@ -12,11 +12,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var firstImageView: UIImageView!
     @IBOutlet weak var secondImageView: UIImageView!
     
-    var diceArray: [UIImage] = [#imageLiteral(resourceName: "black1"), #imageLiteral(resourceName: "black2"), #imageLiteral(resourceName: "black3"), #imageLiteral(resourceName: "black4"), #imageLiteral(resourceName: "black5"), #imageLiteral(resourceName: "black6")]
+    var diceArray: [UIImage] = [#imageLiteral(resourceName: "black1"), #imageLiteral(resourceName: "black2"), #imageLiteral(resourceName: "black3"), #imageLiteral(resourceName: "black4"), #imageLiteral(resourceName: "black5"), #imageLiteral(resourceName: "black6")]   // #imageLiteral(
 
+    // 앱의 화면에 들어오면 가장 먼저 실행되는 메서드
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 앱 실행 시 첫 화면이 주사위 2를 나타내게 함.
         firstImageView.image = diceArray[2]
         secondImageView.image = diceArray[2]
         
