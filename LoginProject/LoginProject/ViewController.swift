@@ -10,7 +10,13 @@ import UIKit
 class ViewController: UIViewController {
 
     // 메모리상에만 존재할 뿐 실제 뷰에는 보여지지 않는 상태
-    let emailTextFieldView = UIView()
+    let emailTextFieldView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.darkGray
+        view.layer.cornerRadius = 8
+        view.layer.masksToBounds = true
+        return view
+    }()
     
     
     override func viewDidLoad() {
@@ -21,9 +27,8 @@ class ViewController: UIViewController {
     }
 
     func makeUI() {
-        emailTextFieldView.backgroundColor = UIColor.darkGray
         
-        // 뷰 하위에 올리는 코드
+        // 실제 뷰 하위에 올리는 코드
         view.addSubview(emailTextFieldView)
         
         // 자동 오토 레이아웃 설정을 끄고 수동으로 설정.
