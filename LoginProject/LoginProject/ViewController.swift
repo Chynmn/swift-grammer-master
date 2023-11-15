@@ -156,6 +156,7 @@ final class ViewController: UIViewController {
         emailInfoLabel.translatesAutoresizingMaskIntoConstraints = false
         emailInfoLabel.leadingAnchor.constraint(equalTo: emailTextFieldView.leadingAnchor, constant: 8).isActive = true
         emailInfoLabel.trailingAnchor.constraint(equalTo: emailTextFieldView.trailingAnchor, constant: -8).isActive = true
+        // 오토 레이아웃을 적용하지 않은 상태에서 오토레이아웃을 적용시켜 동적으로 움직이게 함.
         //emailInfoLabel.centerYAnchor.constraint(equalTo: emailTextFieldView.centerYAnchor).isActive = true
         emailInfoLabelCenterYConstraint.isActive = true
         

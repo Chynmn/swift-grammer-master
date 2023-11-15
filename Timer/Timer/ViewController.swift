@@ -40,32 +40,37 @@ class ViewController: UIViewController {
     @IBAction func sliderChanged(_ sender: UISlider) {
         // 슬라이더의 값을 가지고 메인레이블의 텍스트를 셋팅
         
-        let seconds = Int(slider.value * 60)    // 0.0 ~ 1.0 -> 0 ~ 60
+//        let seconds = Int(slider.value * 60)    // 0.0 ~ 1.0 -> 0 ~ 60
+//        mainLabel.text = "\(seconds) 초"
+//        number = seconds
         
-        mainLabel.text = "\(seconds) 초"
-        
-        number = seconds
+        // refactoring
+        number = Int(sender.value * 60)
+        mainLabel.text = "\(number)"
     }
     
     @IBAction func startButtonTapped(_ sender: UIButton) {
         // 1초씩 지나갈때마다 실행
-        timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [self] _ in
-            
-            if number > 0 {
-                number -= 1
-    //            print(Float(number) / Float(60))
-                slider.value = Float(number) / Float(60)
-                mainLabel.text = "\(number)"
-            } else {
-                mainLabel.text = "초를 선택하세요"
-                number = 0
-                timer?.invalidate()
-                AudioServicesPlaySystemSound(SystemSoundID(1000))
-            }
-        }
+        timer?.invalidate()     // 기존에 동작하던 타이머를 비활성화
+        
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(doSomethingAfter1Second), userInfo: nil, repeats: true)
+        // seletor란, 메모리 주소를 담아서 어떤 함수를 가르킬 건지를 연결시킨다. 이는 Objective-C에서 사용하던 기법이기 때문에 해당 함수에 @objc annotation을 추가해야한다.
     }
     
+    @objc func doSomethingAfter1Second() {
+        // 슬라이더와 메인레이블을 1초마다 갱신
+        if number > 0 {
+            number -= 1
+//            print(Float(number) / Float(60))
+            slider.value = Float(number) / Float(60)
+            mainLabel.text = "\(number)"
+        } else {
+            mainLabel.text = "초를 선택하세요"
+            number = 0
+            timer?.invalidate()
+            AudioServicesPlaySystemSound(SystemSoundID(1000))
+        }
+    }
     
     @IBAction func resetButtonTapped(_ sender: UIButton) {
         // 초기화 세팅
