@@ -11,7 +11,7 @@ class BaseballGame {
     // 시도 횟수를 저장하기 위한 배열
     var record = [Int]()
     
-    // 스트라이크, 볼을 전역변수로 선언
+    // 스트라이크, 볼을 선언
     var strike = 0
     var ball = 0
     

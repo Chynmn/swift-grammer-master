@@ -33,7 +33,6 @@ class Calculator {
 
 // 덧셈
 class AddOperation: Calculator, AbstractOperation {
-    
     func calculate(_ firstNumber: Double, _ secondNumber: Double) -> Double {
         return firstNumber + secondNumber
     }
